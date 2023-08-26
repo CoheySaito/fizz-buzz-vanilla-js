@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script src="index.js"></script>
+    <script>
+      const add = () => {
+        const current = document.getElementById("current");
+        const output = document.getElementById("output");
+        current;
+
+        if (output.lastElementChild.innerText === "Start") {
+          const spanElement = document.createElement("span");
+          spanElement.innerText = 1;
+          current.appendChild(spanElement);
+
+          output.lastElementChild.innerText = getFizzBuzzValue(1);
+          return;
+        }
+        const updatedNum = Number(current.lastElementChild.innerText) + 1;
+        current.lastElementChild.innerText = updatedNum;
+        output.lastElementChild.innerText = getFizzBuzzValue(updatedNum);
+      };
+
+      const subtract = () => {
+        const current = document.getElementById("current");
+        const output = document.getElementById("output");
+        const currentCountText = current.lastElementChild.innerText;
+
+        if (output.lastElementChild.innerText === "Start") {
+          return;
+        }
+        if (currentCountText === "1") {
+          current.removeChild(current.lastElementChild);
+          output.lastElementChild.innerText = "Start";
+          return;
+        }
+        const updatedNum = Number(currentCountText) - 1;
+        current.lastElementChild.innerText = updatedNum;
+        output.lastElementChild.innerText = getFizzBuzzValue(updatedNum);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Fizz Buzz</h1>
+    <input type="button" value="add" onclick="add();" />
+    <input
+      type="button"
+      value="subtract"
+      onclick="subtract();"
+      style="margin-left: 1rem"
+    />
+    <div id="current" style="margin: 1rem 0">
+      <span>Current Number:</span>
+    </div>
+    <div id="output"><span>Result:</span><span>Start</span></div>
+  </body>
+</html>
